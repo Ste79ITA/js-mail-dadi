@@ -10,7 +10,7 @@ html {
 
 body {
   background-color: cornflowerblue;
-  padding: 300px;
+  padding: 100px;
 }
 
 .main-card {
@@ -23,16 +23,20 @@ body {
   padding: 30px 100px;
   margin: 0 auto;
   width: 600px;
+  margin-bottom: 50px;
 }
 
-.play-btn {
+.play-btn,
+.login {
   padding: 20px;
   border: 2px solid rgb(226, 32, 226);
   border-radius: 20px;
   cursor: pointer;
+  width: 150px;
 }
 
-.results {
+.results,
+.login-result {
   text-align: center;
   font-size: 20px;
 }

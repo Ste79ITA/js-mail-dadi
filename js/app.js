@@ -15,41 +15,49 @@ const emailDatabase = [
   'nastri.s@gmail.com',
 ];
 
-// - Chiedi all’utente la sua email.
+mailInputDOMElement = document.querySelector('.mail');
+loginDOMElement = document.querySelector('.login');
+loginResultDOMElement = document.querySelector('.login-result');
 
-// let userMail = prompt('Inserisci la tua mail');
-// console.log(userMail);
+let userMail = '';
+// - Salva email utente.
 
-// - Controlla che sia nella lista di chi può accedere.
+userMail = loginDOMElement.addEventListener('click', function () {
+  userMail = mailInputDOMElement.value;
 
-// let mailCheck = emailDatabase.includes(userMail);
+  // - Controlla che sia nella lista di chi può accedere.
 
-// // - Stampa un messaggio appropriato sull’esito del controllo.
+  let mailCheck = emailDatabase.includes(userMail);
 
-// if (mailCheck == true) {
-//   console.log(`Utente riconosciuto, bentornato ${userMail}!`);
-// } else {
-//   console.log(
-//     `L'indirizzo mail: ${userMail} non è corretto o inesistente. Accesso Negato`
-//   );
-// }
+  // - Stampa un messaggio appropriato sull’esito del controllo.
+  let message = '';
+  if (mailCheck == true) {
+    message = `Utente riconosciuto, bentornato ${userMail}!`;
+  } else {
+    message = `L'indirizzo mail: ${userMail} non è corretto o inesistente. Accesso Negato`;
+  }
+
+  loginResultDOMElement.innerHTML = message;
+  mailInputDOMElement.value = '';
+});
 
 // **************
 // DADI
 // **************
 
-// Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
 const resultsDOMElement = document.querySelector('.results');
 const buttonDOMElement = document.querySelector('.play-btn');
 
+// Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
 buttonDOMElement.addEventListener('click', function () {
   let userDice = Math.floor(Math.random() * 6) + 1;
   let computerDice = Math.floor(Math.random() * 6) + 1;
 
-  resultsDOMElement.innerHTML = `User: ${userDice}  |     Computer ${computerDice}`;
+  resultsDOMElement.innerHTML = `User: ${userDice}  |     Computer: ${computerDice}`;
 
   let message = '';
 
+  //   - Stabilire il vincitore, in base a chi fa il punteggio più alto
   if (userDice > computerDice) {
     message = 'HAI VINTO!';
   } else if (userDice < computerDice) {
