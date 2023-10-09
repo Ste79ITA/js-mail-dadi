@@ -27,16 +27,17 @@ userMail = loginDOMElement.addEventListener('click', function () {
 
   // - Controlla che sia nella lista di chi può accedere.
 
-  let mailCheck = emailDatabase.includes(userMail);
+  // let mailCheck = emailDatabase.includes(userMail);
 
-  // - Stampa un messaggio appropriato sull’esito del controllo.
   let message = '';
-  if (mailCheck == true) {
-    message = `Utente riconosciuto, bentornato ${userMail}!`;
-  } else {
-    message = `L'indirizzo mail: ${userMail} non è corretto o inesistente. Accesso Negato`;
+  for (let i = 0; i < emailDatabase.length; i++) {
+    if (emailDatabase[i] === mailInputDOMElement.value) {
+      message = `Utente riconosciuto, bentornato ${userMail}!`;
+    } else {
+      message = `L'indirizzo mail: ${userMail} non è corretto o inesistente. Accesso Negato`;
+    }
   }
-
+  // - Stampa un messaggio appropriato sull’esito del controllo.
   loginResultDOMElement.innerHTML = message;
   mailInputDOMElement.value = '';
 });
